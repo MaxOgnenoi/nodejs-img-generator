@@ -1,13 +1,12 @@
-import express from "express";
-import config from "config";
-import { engine } from "express-handlebars";
-import OpenAI from 'openai';
+import express from 'express'
+import config from 'config'
+import { engine } from 'express-handlebars'
+import { Configuration, OpenAIApi } from 'openai';
 
-
-const configuration = new OpenAI({
-    apiKey: config.get('OPENAI_KEY')
+const configuration = new Configuration({
+    apiKey: config.get('OPENAI_KEY'),
 })
-const openai = new OpenAI(configuration)
+const openai = new OpenAIApi(configuration)
 
 const app = express()
 
@@ -29,19 +28,19 @@ app.post('/', async (req, res) => {
         const response = await openai.createImage({
             prompt,
             size,
-            n: Number(number)
+            n: Number(number),
         })
-        console.log(response)
+
+        console.log(response.data.data)
+
         res.render('index', {
             images: response.data.data,
         })
-
-    } catch (error) {
+    } catch (e) {
         res.render('index', {
-            error: error.message,
+            error: e.message,
         })
     }
 })
-
 
 app.listen(3000, () => console.log('Server started...'))
