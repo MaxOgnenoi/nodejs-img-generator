@@ -1,0 +1,28 @@
+/* styles.css */
+body {
+    background-color: #121212; 
+    color: #FFFFFF; 
+}
+
+.container {
+    background-color: #1E1E1E; 
+    border-radius: 10px; 
+    padding: 20px; 
+}
+
+.form-control {
+    background-color: #333; 
+    color: #FFFFFF; 
+    border: 1px solid #666; 
+}
+
+select.form-control, .btn {
+    background-color: #666; 
+    color: #FFFFFF; 
+}
+
+.btn-primary {
+    background-color: #007BFF; 
+}
+
+
